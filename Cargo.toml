@@ -1,6 +1,8 @@
 [package]
 name = "triangular-earth-calendar"
-version = "0.1.0"
+description = "An alternative timekeeping system"
+license = " AGPL-3.0-or-later"
+version = "0.1.1"
 edition = "2021"
 
 [profile.release]

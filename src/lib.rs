@@ -1,8 +1,7 @@
-use chrono::{Datelike, FixedOffset, Local, Offset, TimeZone, Timelike, Utc};
-use std::fmt;
-use std::num::ParseIntError;
-use std::time;
+use chrono::{Datelike, FixedOffset, Local, Offset, Timelike, Utc};
+use std::{fmt, time};
 use std::{
+    num::ParseIntError,
     ops::{Add, Sub},
     str::FromStr,
 };
@@ -14,9 +13,8 @@ pub mod cmds;
 pub enum Errors {
     #[error("Set Logger Error")]
     SetLogger(#[from] log::SetLoggerError),
-    #[error("Parse datetime error")]
+    #[error("Parse chrono datetime error")]
     ParseDateTime(#[from] chrono::ParseError),
-
     #[error("Error when attempting to parse string to int")]
     ParseInt(#[from] ParseIntError),
     #[error("Error when perform std IO")]
@@ -169,7 +167,7 @@ impl Time {
     }
 
     pub fn from_hour(hour: u32) -> Self {
-        Time(((hour * 3600) as f32 * 1.1574) as u32)
+        Time(((hour * 3600) as f32 * 1.15741) as u32)
     }
 
     pub fn now() -> Self {
@@ -224,6 +222,15 @@ impl Date {
     pub fn new(year: Year, month: Month, day: Day) -> Self {
         Date { year, month, day }
     }
+    pub fn tec_epoch() -> Self {
+        Date::new(Year::new(0), Month::new(0), Day::new(0))
+    }
+    pub fn from_datetime(dt: chrono::DateTime<FixedOffset>) -> Self {
+        let year = Year::from_datetime(dt);
+        let month = Month::from_datetime(dt);
+        let day = Day::from_datetime(dt);
+        Date::new(year, month, day)
+    }
 }
 
 impl FromStr for Date {
@@ -270,10 +277,7 @@ impl DateTime {
     }
 
     pub fn from_datetime(dt: chrono::DateTime<FixedOffset>) -> Self {
-        let year = Year::from_datetime(dt);
-        let month = Month::from_datetime(dt);
-        let day = Day::from_datetime(dt);
-        let date = Date::new(year, month, day);
+        let date = Date::from_datetime(dt);
         let time = Time::from_datetime(dt);
         let offset = dt.offset();
         DateTime::new(date, time, Some(*offset))
