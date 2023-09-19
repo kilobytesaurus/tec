@@ -2,7 +2,7 @@
 The core functionality works for me, but I make no promise if it works for you.
 
 # About
-[Src](https://calendars.fandom.com/wiki/Triangular_Earth_Calendar)
+[Src](https://calendars.fandom.com/wiki/Triangular_Earth_Calendar).
 I have an irrational hatred for the Gregorian Calender and Standard Time.
 [Decimal Time](https://en.wikipedia.org/wiki/Decimal_time) 
 

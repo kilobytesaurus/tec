@@ -2,7 +2,7 @@
 name = "triangular-earth-calendar"
 description = "An alternative timekeeping system"
 license = " AGPL-3.0-or-later"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2021"
 
 [profile.release]
@@ -10,6 +10,10 @@ strip = true
 lto = true
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[workspace]
+members = [
+		"triangular-earth-calender-lib",
+]
 
 [dev-dependencies]
 pretty_assertions = "1.4.0"
