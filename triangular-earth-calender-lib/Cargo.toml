@@ -5,8 +5,10 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[dev-dependencies]
+pretty_assertions = "1.4.0"
+
 [dependencies]
 chrono = { version = "0.4.31", features = ["serde"] }
 dateparser = "0.2.0"
-log = "0.4.20"
 thiserror = "1.0.48"

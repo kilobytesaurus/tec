@@ -9,8 +9,8 @@ use thiserror::Error;
 
 #[derive(Debug, Error)]
 pub enum Errors {
-    #[error("Set Logger Error")]
-    SetLogger(#[from] log::SetLoggerError),
+    //#[error("Set Logger Error")]
+    //SetLogger(#[from] log::SetLoggerError),
     #[error("Parse chrono datetime error")]
     ParseDateTime(#[from] chrono::ParseError),
     #[error("Error when attempting to parse string to int")]
