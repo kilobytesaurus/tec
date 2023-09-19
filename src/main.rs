@@ -1,7 +1,10 @@
+use crate::cmds::SubCmd;
 use clap::Parser;
 use log::info;
 use simplelog::{ColorChoice, Config, LevelFilter, TermLogger, TerminalMode};
-use triangular_earth_calendar::{cmds::SubCmd, DateTime, Errors};
+use triangular_earth_calender_lib::Errors;
+
+pub mod cmds;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None, arg_required_else_help(true))]
